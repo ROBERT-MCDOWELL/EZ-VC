@@ -52,7 +52,7 @@ class AudioFileWriterThread(threading.Thread):
                 try:
                     chunk = self.queue.get(timeout=0.1)
                     if chunk is not None:
-                        chunk = np.int16(chunk * 32767)
+                        chunk = chunk.astype(np.int16)
                         self.audio_data.append(chunk)
                         wf.writeframes(chunk.tobytes())
                 except queue.Empty:
