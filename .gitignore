@@ -8,52 +8,58 @@ __pycache__/
 env/
 venv/
 .venv/
-.venv.*
 .ENV
 .ENV.*
-.egg-info/
-.eggs/
-dist/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+!.env.default
+.venv.bak/
+.venv_old/
+.venv-*/
+venv-*/
+
+# Build artifacts
 build/
-*.egg-info
+dist/
+*.egg
+*.egg-info/
+*.so
+.libs/
+.pytest_cache/
+.mypy_cache/
 .coverage
 htmlcov/
 .coverage.*
-.mypy_cache/
-.pytest_cache/
-.tox/
-.hypothesis/
-
-# System
-.DS_Store
-Thumbs.db
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Icon?
-iTunes_Control/
-@eaDir
-*.fuse_hidden*
-.directory
-*.nfs*
-
-# Logs
-*.log
-
-# Environment variables
-.env
-.env.local
-.env.*
-!.env.example
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
 *.tmp
+*.temp
+*~
+
+# Environment specific
+.env.local
+.env.*
+!env.example
+!env.sample
+!env.template
+!env.default
 
 # Coverage
 coverage/
@@ -61,8 +67,12 @@ htmlcov/
 
 # Distribution / packaging
 .Python
-_build/
-buck-out/
+__pycache__/
+*.py[cod]
+*$py.class
+*$pyc.class
+*.so
+.Python
 build/
 develop-eggs/
 dist/
@@ -75,8 +85,6 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -89,17 +97,8 @@ share/python-wheels/
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
-coverage/
-htmlcov/
-.tox/
-.nox/
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
+.hypothesis/
+cover/
 
 # Translations
 *.mo
@@ -146,29 +145,48 @@ celerybeat-schedule
 celerybeat.pid
 
 # Sage
-home/sage/.sage/
-.sage/
-src/f5_tts/__pycache__/
+*.sage.py
 
-# Mypy
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
 .mypy_cache/
+.dmypy.json
+dmypy.json
 
 # Pyre
 .pyre/
 
-# pytest
-.pytest_cache/
-
-# tox
-.tox/
-
-# build system
-*.so
-*.dylib
-*.dll
-
-# temporary files
-*.tmp
-*.temp
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 *~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 ```
