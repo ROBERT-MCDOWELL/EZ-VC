@@ -3,12 +3,22 @@ import joblib
 import torch
 import librosa
 from cached_path import cached_path
-from espnet2.tasks.ssl import SSLTask
+
+# Lazy import espnet only when needed for voice conversion
+def _load_espnet():
+    try:
+        from espnet2.tasks.ssl import SSLTask
+        return SSLTask
+    except ImportError:
+        raise ImportError(
+            "espnet is required for voice conversion (XEUS). "
+            "Please install it with: pip install espnet"
+        )
 
 xeus_path = str(cached_path(f"hf://espnet/xeus/model/xeus_checkpoint_old.pth"))
 km_path = str(cached_path(f"hf://SPRINGLab/EZ-VC/kmeans_xeus_500_multilingual.pkl"))
 km_model = joblib.load(km_path)
-unit_map = json.load(open("xeus/char_map.json"))
+unit_map = json.load(open("src/f5_tts/infer/xeus/char_map.json"))
 
 # device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -35,6 +45,7 @@ class ApplyKmeans:
 
 # Load XEUS model from checkpoint
 def load_xeus_model(device):
+    SSLTask = _load_espnet()
     xeus_model, _ = SSLTask.build_model_from_file(
         'xeus/config.yaml',
         xeus_path,

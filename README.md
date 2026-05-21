@@ -78,8 +78,9 @@ cd EZ-VC
 git submodule update --init --recursive
 pip install -e .
 
-# Install espnet for xeus (Exactly this version)
-pip install 'espnet @ git+https://github.com/wanchichen/espnet.git@ssl'
+# Optional: Install espnet for xeus voice conversion feature
+# Only needed if you want to use the XEUS voice conversion functionality
+# pip install 'espnet @ git+https://github.com/wanchichen/espnet.git@ssl'
 ```
 
 ## Inference
